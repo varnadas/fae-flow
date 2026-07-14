@@ -127,51 +127,53 @@ const VARIANTS: VariantInfo[] = [
 export default function App() {
   const [active, setActive] = useState<LayoutVariant>("middle");
   const [illustration, setIllustration] = useState<IllustrationId>("trio");
-  const [showInfo, setShowInfo] = useState(true);
+  const [showInfo, setShowInfo] = useState(false);
   const info = VARIANTS.find((v) => v.id === active)!;
 
   return (
     <div className="explorer">
-      <header className="explorer-head">
-        <h1>Pictogram layout explorer</h1>
-        <p>
-          The age-check screen shown a few different ways. Switch tabs to
-          compare, swap the illustration up top, then pick the direction you
-          want.
-        </p>
-      </header>
+      <aside className="sidebar">
+        <header className="explorer-head">
+          <h1>FAE illustration explorer</h1>
+          <p>
+            The age-check screen shown a few different ways. Switch tabs to
+            compare, swap the illustration, then pick the direction you want.
+          </p>
+        </header>
 
-      <div className="illo-switch" role="group" aria-label="Illustration">
-        <span className="illo-switch-label">Illustration</span>
-        <div className="segmented">
-          {ILLUSTRATIONS.map((i) => (
-            <button
-              key={i.id}
-              type="button"
-              aria-pressed={illustration === i.id}
-              className={`segment ${illustration === i.id ? "segment--active" : ""}`}
-              onClick={() => setIllustration(i.id)}
-            >
-              {i.label}
-            </button>
-          ))}
+        <div className="illo-switch" role="group" aria-label="Illustration">
+          <span className="illo-switch-label">Illustration</span>
+          <div className="segmented">
+            {ILLUSTRATIONS.map((i) => (
+              <button
+                key={i.id}
+                type="button"
+                aria-pressed={illustration === i.id}
+                className={`segment ${illustration === i.id ? "segment--active" : ""}`}
+                onClick={() => setIllustration(i.id)}
+              >
+                {i.label}
+              </button>
+            ))}
+          </div>
         </div>
-      </div>
 
-      <div className="controls">
-        <nav className="tabbar" role="tablist" aria-label="Layout options">
-          {VARIANTS.map((v) => (
-            <button
-              key={v.id}
-              role="tab"
-              aria-selected={active === v.id}
-              className={`tab ${active === v.id ? "tab--active" : ""}`}
-              onClick={() => setActive(v.id)}
-            >
-              {v.tab}
-            </button>
-          ))}
-        </nav>
+        <div className="tab-group">
+          <span className="illo-switch-label">Concepts</span>
+          <nav className="tabbar" role="tablist" aria-label="Layout options">
+            {VARIANTS.map((v) => (
+              <button
+                key={v.id}
+                role="tab"
+                aria-selected={active === v.id}
+                className={`tab ${active === v.id ? "tab--active" : ""}`}
+                onClick={() => setActive(v.id)}
+              >
+                {v.tab}
+              </button>
+            ))}
+          </nav>
+        </div>
 
         <button
           type="button"
@@ -181,15 +183,19 @@ export default function App() {
         >
           {showInfo ? "Hide details" : "Show details"}
         </button>
-      </div>
+      </aside>
 
-      <div className={`explorer-body ${showInfo ? "" : "explorer-body--solo"}`}>
+      <main className={`explorer-body ${showInfo ? "" : "explorer-body--solo"}`}>
         <div className="stage">
           <AgeCheckScreen variant={active} illustration={illustration} />
         </div>
 
-        {showInfo && (
-          <aside className="info" role="tabpanel">
+        <aside
+          className={`info ${showInfo ? "" : "info--hidden"}`}
+          role="tabpanel"
+          aria-hidden={!showInfo}
+        >
+          <div className="info-inner">
             <span className="info-eyebrow">Option</span>
             <h2 className="info-title">{info.title}</h2>
             <p className="info-desc">{info.description}</p>
@@ -217,9 +223,9 @@ export default function App() {
               <span className="info-best-label">Best for</span>
               <p>{info.best}</p>
             </div>
-          </aside>
-        )}
-      </div>
+          </div>
+        </aside>
+      </main>
     </div>
   );
 }
