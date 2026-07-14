@@ -1,0 +1,385 @@
+.device {
+  background: #000000;
+  border-radius: 56px;
+  padding: 6px;
+}
+
+.screen {
+  position: relative;
+  width: 393px;
+  height: 852px;
+  background: var(--color-surface-0);
+  border-radius: 50px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  color: var(--color-content-emphasis);
+}
+
+/* ---------- Status bar (NavBar, h=58) ---------- */
+.status-bar {
+  height: 58px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px 0 34px;
+  color: var(--color-content-emphasis);
+}
+
+.status-time {
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: -0.2px;
+}
+
+.status-notch {
+  width: 125px;
+  height: 37px;
+  background: #000000;
+  border-radius: 20px;
+  margin-top: -2px;
+}
+
+.status-icons {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+/* ---------- Header (close button row, h=64) ---------- */
+.content {
+  flex-shrink: 0;
+}
+
+.header {
+  height: 64px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+  padding: 18px var(--screen-padding-x) 0;
+}
+
+.close-btn {
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: var(--color-content-emphasis);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ---------- Body (heading + list) ---------- */
+.body {
+  padding: 0 var(--screen-padding-x);
+}
+
+.title {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -1px;
+  color: var(--color-content-emphasis);
+  margin-bottom: 20px;
+}
+
+/* Concise single-sentence copy (sentence variant) */
+.lead {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.4;
+  color: var(--color-content-default);
+}
+
+.list {
+  list-style: none;
+}
+
+.list-item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--padding-large);
+  padding: 12px 0;
+}
+
+.list-icon {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  color: var(--color-content-default);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.list-text {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.4;
+  color: var(--color-content-default);
+}
+
+.inline-link {
+  color: var(--color-content-default);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* Flexible spacer fills the empty middle region and pushes the footer down */
+.spacer {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ---------- Footer (Button and Legal, h=244) ---------- */
+.footer {
+  flex-shrink: 0;
+  padding: 0 var(--screen-padding-x);
+}
+
+.legal {
+  font-size: 11px;
+  font-weight: 400;
+  line-height: 1.4;
+  color: #9a9ca4;
+}
+
+.legal .inline-link {
+  color: #9a9ca4;
+}
+
+.continue-btn {
+  margin-top: 12px;
+  width: 100%;
+  height: 40px;
+  border: none;
+  border-radius: var(--radius-medium);
+  background: var(--color-action-emphasis-bg);
+  color: var(--color-action-emphasis-fg);
+  font-family: var(--font-family);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.footer-row {
+  height: 46px;
+  margin-top: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.lang-selector {
+  display: flex;
+  align-items: center;
+  gap: var(--gap-small);
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: var(--color-content-emphasis);
+  font-family: var(--font-family);
+  font-size: 16px;
+  font-weight: 400;
+  cursor: pointer;
+}
+
+.lang-selector svg:first-child {
+  color: var(--color-content-default);
+}
+
+.lang-selector svg:last-child {
+  color: var(--color-content-default);
+}
+
+.persona {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2px;
+  color: #6b6d76;
+}
+
+.persona-label {
+  font-size: 8px;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+.persona-wordmark {
+  color: #6b6d76;
+}
+
+/* ---------- Home indicator (h=24) ---------- */
+.home-indicator {
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.home-indicator::after {
+  content: "";
+  width: 139px;
+  height: 5px;
+  border-radius: 100px;
+  background: var(--color-content-emphasis);
+}
+
+/* =====================================================================
+   Layout variants for pictogram placement
+   ===================================================================== */
+
+/* --- Pictogram placed right after the header (Top hero) --- */
+.picto-hero {
+  display: flex;
+  justify-content: center;
+  padding: 4px var(--screen-padding-x) 16px;
+}
+
+/* --- Pictogram placed under the title (Middle space) --- */
+.picto-under-title {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+/* --- Concise copy (left-aligned layout) --- */
+.picto-center {
+  display: flex;
+  justify-content: flex-start;
+  padding: 0 var(--screen-padding-x);
+}
+.screen--sentence .title,
+.screen--sentence .lead {
+  text-align: left;
+}
+.screen--sentence .title {
+  margin-bottom: 4px;
+}
+.screen--sentence .lead {
+  margin-top: 0;
+}
+.screen--sentence .legal {
+  text-align: left;
+}
+
+/* --- Friendly (top illustration + big warm headline) --- */
+.screen--friendly .picto-hero {
+  padding-top: 8px;
+  padding-bottom: 28px;
+}
+.screen--friendly .title {
+  font-size: 32px;
+  line-height: 1.14;
+  letter-spacing: -1.2px;
+  margin-bottom: 14px;
+}
+.screen--friendly .lead {
+  font-size: 17px;
+  line-height: 1.45;
+  color: #9a9ca4;
+}
+
+/* --- Steps ("Here's what happens" timeline) --- */
+.picto-topleft {
+  display: flex;
+  justify-content: center;
+  padding: 4px var(--screen-padding-x) 16px;
+}
+.screen--steps .title {
+  font-size: 30px;
+  line-height: 1.15;
+  letter-spacing: -1px;
+  margin-bottom: 26px;
+}
+
+.steps {
+  list-style: none;
+}
+
+.step {
+  display: flex;
+  gap: 16px;
+  position: relative;
+}
+
+.step:not(:last-child) {
+  padding-bottom: 14px;
+}
+
+.step-rail {
+  position: relative;
+  width: 44px;
+  flex-shrink: 0;
+}
+
+.step-badge {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #17171c;
+  border: 1px solid #2b2b33;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-content-emphasis);
+}
+
+/* Continuous connector: absolutely positioned so it always spans from just
+   below one badge to just above the next, regardless of the text height. */
+.step:not(:last-child) .step-rail::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50px;
+  bottom: -10px;
+  width: 1.5px;
+  margin-left: -0.75px;
+  background: #2b2b33;
+}
+
+.step-text {
+  padding-top: 8px;
+  padding-bottom: 4px;
+}
+
+.step-title {
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: -0.3px;
+  color: var(--color-content-emphasis);
+}
+
+.step-desc {
+  margin-top: 3px;
+  font-size: 15px;
+  line-height: 1.4;
+  color: #9a9ca4;
+}
+
+/* --- Big Type (oversized two-tone headline) --- */
+.picto-corner {
+  display: flex;
+  justify-content: flex-start;
+  padding: 4px var(--screen-padding-x) 20px;
+  margin-left: -6px;
+}
+.screen--big-type .title {
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 1.08;
+  letter-spacing: -1.6px;
+  margin-bottom: 0;
+}
+.screen--big-type .title-dim {
+  color: #6f7178;
+}
