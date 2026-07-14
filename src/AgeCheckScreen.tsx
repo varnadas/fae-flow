@@ -1,6 +1,7 @@
 import "./App.css";
 import { Pictogram, type IllustrationId } from "./Pictogram";
 import {
+  AvatarIcon,
   CameraIcon,
   CameraIdIcon,
   ChevronDownIcon,
@@ -15,6 +16,7 @@ import {
 export type LayoutVariant =
   | "original"
   | "top-hero"
+  | "middle-icons"
   | "middle"
   | "sentence"
   | "friendly"
@@ -50,6 +52,19 @@ type ListItem = {
   content: React.ReactNode;
 };
 
+const unlockItem: ListItem = {
+  icon: <ShieldLockIcon />,
+  content: (
+    <>
+      An age check unlocks more features and helps keep you safe.{" "}
+      <a className="inline-link" href="#">
+        View details
+      </a>
+      .
+    </>
+  ),
+};
+
 const listItems: ListItem[] = [
   {
     icon: <CameraIdIcon />,
@@ -59,18 +74,21 @@ const listItems: ListItem[] = [
     icon: <ShieldCheckIcon />,
     content: <>We delete your images and video after processing.</>,
   },
+  unlockItem,
+];
+
+/* Middle space combines the camera + deletion lines into one concise point. */
+const middleListItems: ListItem[] = [
   {
-    icon: <ShieldLockIcon />,
+    icon: <CameraIdIcon />,
     content: (
       <>
-        An age check unlocks more features and helps keep you safe.{" "}
-        <a className="inline-link" href="#">
-          View details
-        </a>
-        .
+        We use the camera only for this check, then delete your images and video
+        afterward.
       </>
     ),
   },
+  unlockItem,
 ];
 
 function StatusBar() {
@@ -122,12 +140,18 @@ function StatusBar() {
   );
 }
 
-function List() {
+function List({
+  hideIcons = false,
+  items = listItems,
+}: {
+  hideIcons?: boolean;
+  items?: ListItem[];
+}) {
   return (
     <ul className="list">
-      {listItems.map((item, i) => (
+      {items.map((item, i) => (
         <li className="list-item" key={i}>
-          <span className="list-icon">{item.icon}</span>
+          {!hideIcons && <span className="list-icon">{item.icon}</span>}
           <span className="list-text">{item.content}</span>
         </li>
       ))}
@@ -221,7 +245,10 @@ export function AgeCheckScreen({
 
           {(variant === "top-hero" || isFriendly) && (
             <div className="picto-hero">
-              <Pictogram width={288} illustration={illustration} />
+              <Pictogram
+                width={isFriendly ? 344 : 288}
+                illustration={illustration}
+              />
             </div>
           )}
 
@@ -233,7 +260,7 @@ export function AgeCheckScreen({
 
           {isBigType && (
             <div className="picto-corner">
-              <Pictogram width={200} illustration={illustration} />
+              <AvatarIcon size={88} className="avatar-corner" />
             </div>
           )}
 
@@ -249,7 +276,7 @@ export function AgeCheckScreen({
               <h1 className="title">{title}</h1>
             )}
 
-            {variant === "middle" && (
+            {(variant === "middle" || variant === "middle-icons") && (
               <div className="picto-under-title">
                 <Pictogram width={300} illustration={illustration} />
               </div>
@@ -272,7 +299,10 @@ export function AgeCheckScreen({
             ) : isSteps ? (
               <Steps />
             ) : isBigType ? null : (
-              <List />
+              <List
+                hideIcons={variant === "middle"}
+                items={variant === "middle" ? middleListItems : listItems}
+              />
             )}
           </div>
         </div>

@@ -41,8 +41,25 @@ const VARIANTS: VariantInfo[] = [
     best: "When you want the illustration to lead the story.",
   },
   {
+    id: "middle-icons",
+    tab: "Middle + icons",
+    title: "Under the title, full list",
+    description:
+      "The pictogram sits directly under the heading, followed by all three assurances, each with its own icon — the more detailed version of the middle-space layout.",
+    pros: [
+      "Illustration reinforces the headline",
+      "Every assurance is called out separately",
+      "Icons make each point scannable",
+    ],
+    cons: [
+      "Most text of the middle-space options",
+      "Pushes the list and legal copy down",
+    ],
+    best: "When you want the image up top but still want each assurance spelled out.",
+  },
+  {
     id: "middle",
-    tab: "Middle space",
+    tab: "Middle no icons",
     title: "Under the title",
     description:
       "The pictogram sits directly under the heading, between the title and the list, tying the illustration to the message.",

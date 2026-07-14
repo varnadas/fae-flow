@@ -1,6 +1,6 @@
 import "./Pictogram.css";
 
-export type IllustrationId = "trio" | "camera-smiley" | "shield-camera";
+export type IllustrationId = "trio" | "camera-avatar" | "shield-camera";
 
 type IllustrationMeta = {
   id: IllustrationId;
@@ -18,21 +18,21 @@ type IllustrationMeta = {
 export const ILLUSTRATIONS: IllustrationMeta[] = [
   {
     id: "trio",
-    label: "Shield · Camera · Smiley",
+    label: "Avatar Centered",
     file: "pictogram-trio.svg",
-    alt: "Shield, camera and smiling-face age-check illustration",
+    alt: "Avatar-centered age-check illustration",
   },
   {
-    id: "camera-smiley",
-    label: "Camera · Smiley",
+    id: "camera-avatar",
+    label: "Camera · Avatar",
     file: "pictogram-camera-smiley.svg",
-    alt: "Camera and smiling-face age-check illustration",
+    alt: "Camera and avatar age-check illustration",
   },
   {
     id: "shield-camera",
-    label: "Shield · Camera",
+    label: "Shield Centered",
     file: "pictogram-shield-camera.svg",
-    alt: "Shield and camera age-check illustration",
+    alt: "Shield-centered age-check illustration",
   },
 ];
 

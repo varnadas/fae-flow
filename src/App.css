@@ -373,6 +373,9 @@
   padding: 4px var(--screen-padding-x) 20px;
   margin-left: -6px;
 }
+.avatar-corner {
+  color: var(--color-content-emphasis);
+}
 .screen--big-type .title {
   font-size: 40px;
   font-weight: 700;
@@ -382,4 +385,22 @@
 }
 .screen--big-type .title-dim {
   color: #6f7178;
+}
+/* Center the avatar + headline as one block in the space above the footer. */
+.screen--big-type .content {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+.screen--big-type .spacer {
+  flex: 0 0 auto;
+}
+.screen--big-type .picto-corner {
+  margin-top: auto;
+  transform: translateY(-40px);
+}
+.screen--big-type .body {
+  margin-bottom: auto;
+  transform: translateY(-40px);
 }
